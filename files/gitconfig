@@ -1,0 +1,17 @@
+[core]
+	excludesfile = /usr/local/etc/gitignore
+[color]
+	ui = true
+[credential]
+    helper = osxkeychain
+[alias]
+	st = status -s
+	ci = commit
+	co = checkout
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	branch-main = !git checkout --quiet main && git pull --quiet --ff-only upstream main && git checkout -b;
+	out = !/usr/local/share/git-scripts/out.sh
+	in = !git fetch && git log --pretty=oneline --abbrev-commit --graph $(git rev-parse --abbrev-ref HEAD)..
+	undo-commit = reset --soft HEAD^
+	branch-list = for-each-ref --sort=committerdate --no-merged upstream/main refs/heads/ --format='%(color:magenta)%(HEAD) %(align:6,left)%(color:red)%(upstream:trackshort)%(color:reset)%(end) %(align:32,left)%(color:yellow)%(refname:short)%(color:reset)%(end)%(align:32,left)%(color:green)%(committerdate:relative)%(color:reset)%(end) %(color:black)%(upstream:short)%(color:reset)'
+	branch-feature = "!f() { git fetch upstream && git checkout --no-track -b \"${1}\" upstream/main && git push --set-upstream origin \"${1}\"; }; f"
