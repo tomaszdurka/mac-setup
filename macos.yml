@@ -29,6 +29,7 @@
       - jq
       - kubectl
       - mc
+      - mutagen-io/mutagen/mutagen
       - nmap
       - node
       - nomad
